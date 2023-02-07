@@ -1,0 +1,168 @@
+<!DOCTYPE>
+<html lang="eng">
+<title>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head></head></title>
+<body>
+<canvas id="Matrix"></canvas>
+<figure class="snip1344">
+<img src="https://i.imgur.com/nXG491Qb.jpg" alt="profile-sample1" class="profile"/>
+<img src="https://i.imgur.com/nXG491Qb.jpg" alt="profile-sample1" class="background"/>
+  <figcaption>
+    <h3>ZiVan21Ft<span>the chaos take down loyalty</span></h3>
+    <div class="icons"><a href="https://www.reddit.com/u/ZiVan21Ft/?utm_source=share&utm_medium=ios_app&utm_name=iossmf"><i class="ion-social-reddit-outline"></i></a><a href="https://twitter.com/zii_van"> <i class="ion-social-twitter-outline"></i></a><a href="https://www.instagram.com/ziivannnnn"> <i class="ion-social-instagram-outline"></i></a></div>
+  </figcaption>
+</figure>
+</body>
+<style>
+html {
+	background: black;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  pading: 0;
+  overflow: hidden;
+
+}
+</style>
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+.snip1344 {
+  font-family: 'Open Sans', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 200px;
+  max-width: 340px;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.4em;
+  background-color: #141414;
+  left: 50%;
+  transform: translate( -50%, -155%);
+}
+.snip1344 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.snip1344 .background {
+  margin: 0 0 0 px;
+  padding: 0;
+  width: 100%;
+  vertical-align: top;
+  opacity: 0.2;
+  -webkit-filter: grayscale(100%) blur(10px);
+  filter: grayscale(100%) blur(10px);
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+.snip1344 figcaption {
+  width: 100%;
+  padding: 15px 25px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+.snip1344 .profile {
+  border-radius: 50%;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  max-width: 100px;
+  opacity: 1;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+}
+.snip1344 h3 {
+  margin: 0 0 5px;
+  font-weight: 400;
+}
+.snip1344 h3 span {
+  display: block;
+  font-size: 0.6em;
+  color: #f39c12;
+  opacity: 0.75;
+}
+.snip1344 i {
+  padding: 10px 5px;
+  display: inline-block;
+  font-size: 32px;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0.65;
+}
+.snip1344 a {
+  text-decoration: none;
+}
+.snip1344 i:hover {
+  opacity: 1;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip1344:hover .background,
+.snip1344.hover .background {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+</style>
+<script type="text/javascript">
+/* Demo purposes only */
+$(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+</script>
+<script>
+const canvas = document.getElementById('Matrix');
+const context = canvas.getContext('2d');
+
+const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const nums = '0123456789';
+
+const alphabet = katakana + latin + nums;
+
+const fontSize = 16;
+const columns = canvas.width;
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const rainDrops = [];
+
+for( let x = 0; x < columns; x++ ) {
+    rainDrops[x] = 1;
+}
+
+const draw = () => {
+  context.fillStyle = 'rgba(0,0,0,0.05)'
+  context.fillRect(0,0, canvas.width, canvas.height);
+  
+    context.fillStyle = '#0F0';
+    context.font = fontSize + 'px monospace';
+
+    for(let i = 0; i < rainDrops.length; i++)
+    {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        context.fillText(text, i*fontSize, rainDrops[i]*fontSize);
+
+        if(rainDrops[i]*fontSize > canvas.height && Math.random() > 0.975){
+            rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
+    }
+}
+
+setInterval(draw, 30);
+</script>
+</html>
